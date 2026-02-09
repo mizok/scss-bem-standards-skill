@@ -1,4 +1,4 @@
-# SCSS BEM Standards
+# Angular SCSS BEM Standards
 
 > Angular component styling skill for Claude Code, Codex, and ChatGPT
 
@@ -9,6 +9,7 @@ A comprehensive skill for writing, reviewing, and refactoring Angular component 
 This skill helps AI agents maintain consistent, predictable, and reusable component styles by enforcing:
 
 - **BEM naming conventions** — One block per component, semantic element/modifier names
+- **Component Structure** — Single root element with component name class
 - **Flat selector architecture** — Avoid deep nesting, prefer explicit classes
 - **Design token usage** — Replace hard-coded values with `var(--token)`
 - **Angular integration** — Proper class binding patterns with signals and control flow
@@ -26,7 +27,7 @@ This skill helps AI agents maintain consistent, predictable, and reusable compon
 ### One-Click Install (Recommended)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/mizok/scss-bem-standards-skill/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mizok/angular-scss-bem-standards-skill/main/install.sh | bash
 ```
 
 The installer automatically detects your AI agent (Claude Code or Codex CLI) and installs to the correct directory.
@@ -36,18 +37,18 @@ The installer automatically detects your AI agent (Claude Code or Codex CLI) and
 #### For Claude Code
 
 ```bash
-git clone https://github.com/mizok/scss-bem-standards-skill.git ~/.claude/skills/scss-bem-standards
+git clone https://github.com/mizok/angular-scss-bem-standards-skill.git ~/.claude/skills/angular-scss-bem-standards
 ```
 
 #### For Codex CLI
 
 ```bash
-git clone https://github.com/mizok/scss-bem-standards-skill.git ~/.agents/skills/scss-bem-standards
+git clone https://github.com/mizok/angular-scss-bem-standards-skill.git ~/.agents/skills/angular-scss-bem-standards
 ```
 
 ### Verify Installation
 
-Restart your AI agent and the skill should appear in the available skills list. You can verify by looking for `scss-bem-standards` in:
+Restart your AI agent and the skill should appear in the available skills list. You can verify by looking for `angular-scss-bem-standards` in:
 
 - Claude Code: Check system reminders for available skills
 - Codex CLI: Run `codex skills list`
@@ -56,8 +57,8 @@ Restart your AI agent and the skill should appear in the available skills list. 
 
 ```bash
 # Navigate to skill directory
-cd ~/.claude/skills/scss-bem-standards
-# Or for Codex: cd ~/.agents/skills/scss-bem-standards
+cd ~/.claude/skills/angular-scss-bem-standards
+# Or for Codex: cd ~/.agents/skills/angular-scss-bem-standards
 
 # Pull latest changes
 git pull
@@ -77,7 +78,7 @@ This skill automatically triggers when:
 ## 🏗️ Skill Structure
 
 ```
-scss-bem-standards/
+angular-scss-bem-standards/
 ├── SKILL.md                           # Main skill documentation
 ├── references/
 │   └── review-checklist.md            # Detailed review criteria
@@ -87,7 +88,8 @@ scss-bem-standards/
 
 ## 🎓 Core Principles
 
-1. **One BEM block per component** — Keeps styles scoped and predictable
+1. **Root Class Matching** — Component root element class matches component name (e.g. `.login`)
+2. **One BEM block per component** — Keeps styles scoped and predictable
 2. **Flat selectors by default** — `block__element--modifier`, not deep nesting
 3. **Design tokens first** — Use `var(--space-*)`, `var(--color-*)`, etc.
 4. **Split when complex** — If you need more than one descendant level, create a child component
