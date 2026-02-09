@@ -11,21 +11,23 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Detect agent type and set skills directory
-detect_agent() {
-  if command -v claude &> /dev/null; then
-    echo "claude"
-    SKILLS_DIR="$HOME/.claude/skills"
-  elif command -v codex &> /dev/null; then
-    echo "codex"
-    SKILLS_DIR="$HOME/.agents/skills"
-  else
-    echo "unknown"
-    SKILLS_DIR="$HOME/.claude/skills"
-  fi
-}
+# Ensure HOME is set
+if [ -z "$HOME" ]; then
+  HOME="$( cd ~ && pwd )"
+fi
 
-AGENT_TYPE=$(detect_agent)
+# Detect agent type and set skills directory
+if command -v claude &> /dev/null; then
+  AGENT_TYPE="claude"
+  SKILLS_DIR="$HOME/.claude/skills"
+elif command -v codex &> /dev/null; then
+  AGENT_TYPE="codex"
+  SKILLS_DIR="$HOME/.agents/skills"
+else
+  AGENT_TYPE="unknown"
+  SKILLS_DIR="$HOME/.claude/skills"
+fi
+
 SKILL_NAME="scss-bem-standards"
 REPO_URL="https://github.com/mizok/scss-bem-standards-skill.git"
 
