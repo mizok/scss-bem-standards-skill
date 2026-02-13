@@ -1,6 +1,6 @@
 # Angular SCSS BEM Standards
 
-> Angular component styling skill for Claude Code, Codex, and ChatGPT
+> Angular component styling skill for Claude Code, Codex, Gemini, and Antigravity
 
 A comprehensive skill for writing, reviewing, and refactoring Angular component styles using BEM methodology with design tokens.
 
@@ -30,7 +30,29 @@ This skill helps AI agents maintain consistent, predictable, and reusable compon
 curl -fsSL https://raw.githubusercontent.com/mizok/angular-scss-bem-standards-skill/main/install.sh | bash
 ```
 
-The installer automatically detects your AI agent (Claude Code or Codex CLI) and installs to the correct directory.
+The installer automatically detects your AI agent (Claude Code, Codex CLI, Gemini, or Antigravity) and installs to the correct directory.
+
+### Project Scope Install
+
+Install into the current project instead of your home directory:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mizok/angular-scss-bem-standards-skill/main/install.sh | bash -s -- --scope project
+```
+
+Install into a specific project path:
+
+```bash
+bash install.sh --scope project --project-root /path/to/your/project
+```
+
+The project-scope paths are:
+- Claude: `<project>/.claude/skills`
+- Codex: `<project>/.agents/skills`
+- Gemini: `<project>/.gemini/skills`
+- Antigravity: `<project>/.gemini/antigravity/global_skills`
+
+If `<project>/.agent/skills` already exists, Codex project install also creates a compatibility symlink there that points to `<project>/.agents/skills/angular-scss-bem-standards`.
 
 ### Manual Install
 
@@ -46,12 +68,26 @@ git clone https://github.com/mizok/angular-scss-bem-standards-skill.git ~/.claud
 git clone https://github.com/mizok/angular-scss-bem-standards-skill.git ~/.agents/skills/angular-scss-bem-standards
 ```
 
+#### For Gemini
+
+```bash
+git clone https://github.com/mizok/angular-scss-bem-standards-skill.git ~/.gemini/skills/angular-scss-bem-standards
+```
+
+#### For Antigravity
+
+```bash
+git clone https://github.com/mizok/angular-scss-bem-standards-skill.git ~/.gemini/antigravity/global_skills/angular-scss-bem-standards
+```
+
 ### Verify Installation
 
 Restart your AI agent and the skill should appear in the available skills list. You can verify by looking for `angular-scss-bem-standards` in:
 
 - Claude Code: Check system reminders for available skills
 - Codex CLI: Run `codex skills list`
+- Gemini: Check available skills in Gemini CLI
+- Antigravity: Check global skills list
 
 ### Update to Latest Version
 
@@ -59,6 +95,8 @@ Restart your AI agent and the skill should appear in the available skills list. 
 # Navigate to skill directory
 cd ~/.claude/skills/angular-scss-bem-standards
 # Or for Codex: cd ~/.agents/skills/angular-scss-bem-standards
+# Or for Gemini: cd ~/.gemini/skills/angular-scss-bem-standards
+# Or for Antigravity: cd ~/.gemini/antigravity/global_skills/angular-scss-bem-standards
 
 # Pull latest changes
 git pull
@@ -147,4 +185,4 @@ If this skill helps your AI-assisted development workflow, please consider:
 
 ---
 
-**Made for AI agents** | Compatible with Claude Code, Codex CLI, and ChatGPT
+**Made for AI agents** | Compatible with Claude Code, Codex CLI, Gemini, and Antigravity
